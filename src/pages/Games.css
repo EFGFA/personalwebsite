@@ -1,0 +1,112 @@
+
+
+#reset_speed{
+	border-style: hidden;
+	border-radius: 5px;
+	padding: 5px;
+	text-align: center;
+	font-size: 20px;
+	margin-top: 5px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background-color: #00ffff;
+	color: #ea00ff;
+} 
+#bugmode{
+	border-style: hidden;
+	border-radius: 5px;
+	padding: 5px;
+	text-align: center;
+	font-size: 20px;
+	margin-top: 5px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background-color: #00ffff;
+	color: #ea00ff;
+}
+#reset_score{
+	border-style: hidden;
+	border-radius: 5px;
+	padding: 5px;
+	text-align: center;
+	font-size: 20px;
+	margin-top: 5px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background-color: #00ffff;
+	color: #ea00ff;
+}
+#reset_speed:hover{
+
+	background-color: #ea00ff;
+	color: #00ffff;
+	
+} 
+#bugmode:hover{
+
+	background-color: #ea00ff;
+	color: #00ffff;
+	
+}
+#reset_score:hover{
+
+	background-color: #ea00ff;
+	color: #00ffff;
+	
+}
+
+#scorelabel{
+    margin-left: 20%;
+    font-size: 30px;
+	color: #0116ff;
+
+	
+
+}
+#score{
+    font-size: 40px;
+	padding: 10px;
+	color: #ff0000;
+    font-weight: bold;
+
+	margin-right: 30%;
+
+}
+
+
+#canvas{
+    background-image: url(GamesPics/ocean.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    backgRound-size: cover;
+    width: 700px ;
+    height: 600px;
+    margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+	position: relative;
+	cursor: url(GamesPics/a2.png)16 16 , auto;
+
+}
+   
+
+footer{
+		color: rgb(248, 255, 185);
+		margin-top: 1em;
+		text-align: center;
+	 }
+   
+
+#item{position: absolute;
+	display: inline-block;
+	cursor: url(GamesPics/a1.png)16 16 , auto;}
+
+body{
+    background-image: url(GamesPics/back.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    backgRound-size:cover;
+    background-attachment:fixed;
+    height: 100%;
+}

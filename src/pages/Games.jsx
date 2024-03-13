@@ -1,76 +1,90 @@
-import React from 'react';
-import './Games.css'
-
-
+import React, { useState, useRef, useEffect } from 'react';
+import './Games.css';
 
 const Games = () => {
-let interval = 3000;
-let speed;
 
-const item = React.useRef();
-const score = React.useRef();
-let x_value ;
-let y_value;
+    const [interval, setintervalnum] = useState(3000);
+    let speed;
+    const item = useRef();
+    const score = useRef(0); 
+    const [position, setPosition] = useState({ x: 0, y: 0 });
 
-window.onload = function start() {
-	item.addEventListener("click", checkclick);
-    getmark();
-}
-function getmark() {
-    document.getElementById('score').innerHTML = score;
-    speed = window.setInterval(move, interval );
-  }
+    useEffect(() => {
+        start();
+        return () => {
+            clearInterval(speed);
+        };
+    }, []);
 
-function move(){
-    x_value = Math.random() * 600;
-    y_value = Math.random() * 500;
-	item.style.left = (x_value) + "px";
-	item.style.top = (y_value)  + "px";
-    item.addEventListener("click", checkclick, false);
+    const start = () => {
+        getmark();
+        move();
+    };
 
-}
-function checkclick() {
-	item.removeEventListener("click", checkclick)
-	score = score + 1
-	document.getElementById('score').innerHTML = score;
-	interval = interval - 200;
-	clearInterval(speed);
-	speed = window.setInterval(move, interval);
-    move()
-}
+    const getmark = () => {
+        document.getElementById('score').innerHTML = score.current;
+        speed = window.setInterval(move, interval);
+    };
 
-function resetSpeed() {
-    interval = 3000
-    clearInterval(speed);
-    speed = window.setInterval(move, interval);
-    alert("Speed reset");
-}
+    const move = () => {
+        if (item.current) {
+            const newX = Math.random() * 600;
+            const newY = Math.random() * 500;
+            item.current.addEventListener("click", checkclick, false);
+            setPosition({ x: newX, y: newY });
+        }
+    };
+
+    const checkclick = () => {
+        item.current.removeEventListener("click", checkclick);
+        score.current = score.current + 1;
+        document.getElementById('score').innerHTML = score.current;
+        setintervalnum( {interval} - 1000);
+        clearInterval(speed);
+        speed = window.setInterval(move, interval);
+        move();
+    };
     
-function resetScore() {
-    score = 0;
-    document.getElementById('score').innerHTML = score;
-    alert("Score reset");
-}
 
-function bug() {
-    interval = 0
-    clearInterval(speed);
-    speed = window.setInterval(move, interval);
-    alert("BUG SPEED");
-}
-    return<div id="set">
 
-        <label id="scorelabel">Score: </label>
-        <label ref={score} id="score">100</label>
 
-        <button id="reset_speed" onclick ={resetSpeed} type="button">reset speed</button>
-        <button id="reset_score" onclick={resetScore} type="button">reset score</button>
-        <button id="bugmode" onclick={bug} type="button">supper boost</button>
-        <div id="canvas">
-            <img SRC= {require('./GamesPics/gura.gif')} alt="gura"width="70px" height="100px" id="item" ref={item}/>
+    const resetSpeed = () => { 
+        clearInterval(speed);
+        setintervalnum(3000); 
+        
+        speed = window.setInterval(move, 3000);
+        alert("Speed reset");
+        
+       
+    };
+    
 
+    const resetScore = () => {
+        score.current = 0;
+        document.getElementById('score').innerHTML = score.current;
+        alert("Score reset");
+    };
+
+
+    return (
+        <div id="set">
+            <label id="scorelabel">Score: </label>
+            <label id="score">{score.current}</label>
+       
+            <button id="reset_speed" onClick={resetSpeed} type="button">reset speed</button>
+            <button id="reset_score" onClick={resetScore} type="button">reset score</button>
+            <div id="canvas">
+                <img
+                    src={require('./GamesPics/gura.gif')}
+                    alt="gura"
+                    width="70px"
+                    height="100px"
+                    ref={item}
+                    style={{ position: 'absolute', left: position.x + 'px', top: position.y + 'px' }}
+                />
+            </div>
         </div>
-    </div>;
-  };
-  
-  export default Games;
+    );
+};
+
+export default Games;

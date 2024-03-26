@@ -11,6 +11,8 @@
 	margin-left: 10px;
 	background-color: #00ffff;
 	color: #ea00ff;
+	margin-left: 48%;
+
 } 
 #bugmode{
 	border-style: hidden;
@@ -35,6 +37,8 @@
 	margin-left: 10px;
 	background-color: #00ffff;
 	color: #ea00ff;
+	margin-left: 48.2%;
+
 }
 #reset_speed:hover{
 
@@ -56,12 +60,22 @@
 }
 
 #scorelabel{
-    margin-left: 20%;
+    margin-left: 36%;
     font-size: 30px;
 	color: #0116ff;
 
 	
+	
+}
 
+
+#speedlabel{
+    margin-left: 0;
+    font-size: 30px;
+	color: #0116ff;
+
+	
+	
 }
 #score{
     font-size: 40px;
@@ -69,9 +83,22 @@
 	color: #ff0000;
     font-weight: bold;
 
-	margin-right: 30%;
+	margin-right: 200px;
+	text-align: center;
 
 }
+
+#speed{
+    font-size: 40px;
+	padding: 10px;
+	color: #ff0000;
+    font-weight: bold;
+
+	margin-right: 400px;
+	
+
+}
+
 
 
 #canvas{
